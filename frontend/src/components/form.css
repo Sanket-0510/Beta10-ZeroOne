@@ -2,15 +2,7 @@
 
 
 
-*,
-*:before,
-*:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body {
+form {
     font-family: 'Nunito', sans-serif;
     color: #384047;
 }
@@ -23,7 +15,7 @@ form {
     border-radius: 8px;
 }
 
-h1 {
+form h1 {
     margin: 0 0 30px 0;
     text-align: center;
 }
@@ -80,27 +72,27 @@ form button {
     margin-bottom: 10px;
 }
 
-fieldset {
+form fieldset {
     margin-bottom: 30px;
     border: none;
 }
 
-legend {
+form legend {
     font-size: 1.4em;
     margin-bottom: 2px;
 }
 
-label {
+form label {
     display: block;
     margin-bottom: 2px;
 }
 
-label.light {
+form label.light {
     font-weight: 300;
     display: inline;
 }
 
-.number {
+form .number {
     background-color: #5fcf80;
     color: #fff;
     height: 30px;

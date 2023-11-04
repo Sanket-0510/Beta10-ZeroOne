@@ -4,6 +4,7 @@ import SignUp from './components/SignUp';
 import "./btnstls.css";
 import HomePage from './components/HomePage';
 import Login from './components/Login';
+import MainPage from './components/ResultPage/MainPage';
 const appname = "FarmEasy";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/SignUp' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/MainSearchPage' element={<MainPage />} />
       </Routes>
     </div>
   );

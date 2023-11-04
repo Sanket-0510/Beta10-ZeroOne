@@ -17,7 +17,7 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" aria-current="page" to="/">Notes</Link>
+                            <Link className="nav-link" aria-current="page" to="/">Check Product Quality</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" aria-current="page" to="/About">About</Link>
