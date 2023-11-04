@@ -56,6 +56,7 @@
     }
     .sectionBottom{
         overflow-y: auto;
+        gap: 6%;
     }
 
   }

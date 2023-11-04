@@ -5,7 +5,7 @@ function FilterBar() {
     <>
       <div className='fltrbar'>
       </div>
-      <button class=" filled">Go</button>
+      <button className=" filled">Go</button>
     </>
 
 
