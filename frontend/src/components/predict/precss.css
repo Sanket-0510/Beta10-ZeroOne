@@ -122,7 +122,6 @@
 }
 
 .indata{
-    font-size: larger;
     width: 80%;
 }
 .indata select{
@@ -136,7 +135,6 @@
     align-items: center;
     justify-content: space-evenly;
     width: 70%;
-    font-size: xx-large;
     text-align: start;
     gap: 5%;
     font-weight: bolder;
