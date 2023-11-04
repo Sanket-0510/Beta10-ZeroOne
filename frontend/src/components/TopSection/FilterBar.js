@@ -2,9 +2,13 @@ import React from 'react'
 
 function FilterBar() {
   return (
-    <div className='fltrbar'>
+    <>
+      <div className='fltrbar'>
+      </div>
+      <button class=" filled">Go</button>
+    </>
 
-    </div>
+
   )
 }
 
