@@ -1,0 +1,25 @@
+.raise:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+}
+
+.filled {
+    background-color: rgb(18, 148, 55);
+    border-radius: 20%;
+    border: none;
+    font-size:xx-large;
+    color: #fefefe;
+}
+
+
+.raise {
+    --color: #ffa260;
+    --hover: #e5ff60;
+}
+
+@media screen and (max-width: 980px) {
+    .filled{
+        font-size:large;
+    }
+  }
+

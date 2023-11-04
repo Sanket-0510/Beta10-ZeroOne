@@ -1,0 +1,70 @@
+.mainpge {
+    display: flex;
+    border: 2px solid red;
+    width: 100%;
+    height: 91.7%;
+    overflow-y: hidden;
+
+}
+
+.resmaintop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.resmaintop div {
+    height: 5rem;
+
+}
+
+.leftmainpge {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    border: 2px solid rebeccapurple;
+    width: 60%;
+    min-width: 600px;
+    align-content: center;
+    margin-left: .5rem;
+    margin-top: .5rem;
+    overflow-y: auto;
+
+}
+
+.leftmaingraph {
+    border: 3px solid black;
+    height: 45%;
+}
+
+.rightmainpge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    border: 2px solid black;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+.rightmainpge .content {
+    text-align: left;
+    width: 100%;
+    margin-left: 2%;
+}
+
+@media screen and (max-width: 980px) {
+
+    .leftmainpge,
+    .rightmainpge {
+        width: 100%;
+
+    }
+
+    .mainpge {
+        overflow-y: auto;
+        gap: 6%;
+    }
+
+
+}
