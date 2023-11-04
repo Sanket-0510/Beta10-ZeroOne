@@ -1,9 +1,16 @@
 const express = require("express")
 const app = express();
-
+const session = require('express-session');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+app.use(session({
+    secret: 'your-secret-key', // Change this to a secure secret key
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 1200000 } // Set the session expiration time (in this case, 60 seconds)
+  }));
 require('dotenv').config();
 
 const cors = require('cors');
