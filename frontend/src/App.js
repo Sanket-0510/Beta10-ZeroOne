@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import Login from './components/Login';
 import MainPage from './components/ResultPage/MainPage';
 import Modal from './components/Modal';
+import PredMain from './components/predict/PredMain';
 const appname = "FarmEasy";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/SignUp' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/MainSearchPage' element={<MainPage />} />
+        <Route path='/Predict' element={<PredMain/>} />
       </Routes>
     </div>
   );

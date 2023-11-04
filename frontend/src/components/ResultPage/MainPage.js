@@ -30,15 +30,14 @@ function MainPage() {
     const prices = [20, 21 , 25];
 
     const data = {
-        labels: ['Mon', 'Tue', 'Wed'],
+        labels: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
         datasets: [{
             labels: 'Sales price of the week',
-            data: [6, 3, 9],
+            data: [6, 3, 9, 9 , 4 , 4, 8],
             backgroundColor: 'aqua',
             borderColor: 'black',
             pointBorderColor: 'aqua',
-            fill: true,
-            tension: 0.4
+           
         }]
     }
 

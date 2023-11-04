@@ -7,7 +7,7 @@ function Section() {
     return (
         <div className='sectionBottom'>
             <div className="leftBSec">
-                <h1>Dashboard</h1>
+                <h2>Dashboard</h2>
                 <div className="content">
                     {list.map((e)=>{
                         return <GraphSec key={e}/>
@@ -15,7 +15,7 @@ function Section() {
                 </div>
             </div>
             <div className="rightBSec">
-                <h1>Commodities</h1>
+                <h2>Commodities</h2>
                 history
             </div>
         </div>

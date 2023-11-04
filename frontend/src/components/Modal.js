@@ -1,9 +1,12 @@
 import React, {useRef, useState} from 'react'
+import { useNavigate } from 'react-router';
 import './Modal.css'
 
 const API_KEY = "cb7f415e8a36f048b70a2aa8c574afbf";
 
 function Modal() {
+
+    const Navigate = useNavigate();
     
     const [cityInput, setCity] = useState("Bhopal")
     // const cityInput = document.querySelector(".city-input");
@@ -107,6 +110,9 @@ function Modal() {
             <div className='Mdal' style={{ width: '90%' }}>
                 <button type="button" className="btn btn-outline-success btn-lg"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     See Weather Forecast
+                </button>
+                <button type="button" onClick={()=>Navigate('/Predict')} className="btn btn-outline-info btn-lg ms-4" >
+                    Crop Predictions
                 </button>
 
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
