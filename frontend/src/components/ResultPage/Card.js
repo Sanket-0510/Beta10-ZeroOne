@@ -1,10 +1,11 @@
 import React from 'react'
 
+
 function Card(props) {
 
     const cardData = props.data;
     return (
-        <div className="card mb-3" style={{ maxWidth: '70rem', maxHeight:'20.6rem' }}>
+        <div className="card mb-3" style={{ maxWidth: '70rem', maxHeight:'42%', border:'none' }}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={cardData.img} className="img-fluid rounded-start" alt="..." />

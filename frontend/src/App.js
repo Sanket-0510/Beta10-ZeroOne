@@ -5,6 +5,7 @@ import "./btnstls.css";
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import MainPage from './components/ResultPage/MainPage';
+import Modal from './components/Modal';
 const appname = "FarmEasy";
 
 function App() {
