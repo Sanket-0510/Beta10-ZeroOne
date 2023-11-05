@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./table.css"
-
+import NewContext from '../../Context/NewContext';
 function Table(props) {
-
+    const context = useContext(NewContext)
     const priceData = props.prices;
-    return (
+    console.log("priceData",priceData)
+        return (
         <>
             <table className="rwd-table m-auto mt-5 w-50">
                 <tbody>
@@ -13,20 +14,14 @@ function Table(props) {
                         <th>Date</th>
                         <th>Price</th>
                     </tr>
-                    <tr>
-
-                        <td data-th="Date">6-11-2023</td>
-                        <td data-th="Price">{priceData[0]}</td>
-                    </tr>
-                    <tr>
-
-                        <td data-th="Date">7-11-2023</td>
-                        <td data-th="Price">{priceData[1]}</td>
-                    </tr>
-                    <tr>
-                        <td data-th="Date">8-11-2023</td>
-                        <td data-th="Price">{priceData[2]}</td>
-                    </tr>
+                    {
+                        priceData.result && priceData.result.slice(4,7).map((price, index) => {
+                            return <tr key={price}>
+                                <td data-th="Date">{`${6+index}-11-2023`}</td>
+                                <td data-th="Price">{price}</td>
+                            </tr>
+                        })
+                    }
                 </tbody>
             </table>
         </>

@@ -48,6 +48,12 @@ const DataContext = (props) => {
     const [SelectedNote, setSelectedNote] = useState(null);
     const [SelectedList, setSelectedList] = useState([]);
     const [progress, setProgress] = useState(0);
+    const [selectedCrop, setselectedCrop] = useState("")
+    const [selectedState, setselectedState] = useState("")
+    const [filterData, setfilterData] = useState('')
+    const [foreCasting, setforeCasting] = useState([23,45,12])
+
+
 
     const FetchGenData = async (state, comm) => {
         setProgress(30);
@@ -235,7 +241,7 @@ const DataContext = (props) => {
         return sts;
     }
     return (
-        <NewContext.Provider value={{ Notes: Notes, FetchGenData: FetchGenData, CreateNote: CreateNote, UpdateNote: UpdateNote, setSelectedNote: setSelectedNote, SelectedNote: SelectedNote, DeleteNote: DeleteNote, append: addSelected, delete: deleteSelected, MultiDelete: MultiDelete, deleteClear: deleteClear, SignUp: SignUp, Login: Login, progress: progress, setProgress: setProgress }}>
+        <NewContext.Provider value={{foreCasting:foreCasting, setforeCasting:setforeCasting, filterData: filterData, setfilterData:setfilterData,  selectedCrop: selectedCrop, selectedState: selectedState, setselectedState: setselectedState, setselectedCrop: setselectedCrop, FetchGenData: FetchGenData, CreateNote: CreateNote, UpdateNote: UpdateNote, setSelectedNote: setSelectedNote, SelectedNote: SelectedNote, DeleteNote: DeleteNote, append: addSelected, delete: deleteSelected, MultiDelete: MultiDelete, deleteClear: deleteClear, SignUp: SignUp, Login: Login, progress: progress, setProgress: setProgress }}>
             {props.children}
         </NewContext.Provider>
     )

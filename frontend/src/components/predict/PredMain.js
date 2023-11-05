@@ -10,6 +10,7 @@ import { useDropzone } from 'react-dropzone'
 import MyDropzone from './DropZone'
 import { json } from 'react-router'
 import LifePredict from './LifePredict'
+import Navbar from '../Navbar'
 // import Table from './Table'
 
 function PredMain() {
@@ -17,6 +18,7 @@ function PredMain() {
 
     const [vantaEffect, setVantaEffect] = useState(null)
     const [TaskLoader, setTaskLoader] = useState(false)
+    const [imgRes, setimgRes] = useState("Result")
     const [urlimg, setUrlimg] = useState(null)
     const [tableLoaded, settableLoaded] = useState(false)
     const [acceptedFile, setacceptedFile] = useState(null)
@@ -31,7 +33,7 @@ function PredMain() {
         setTaskLoader(true)
         // settableLoaded(false)
     }
-    var url = "http://127.0.0.1:8000/cv/uploadImage"
+    var url = "http://localhost:5000/"
     const imgSetterTest = () => {
         var accepFile = require('../../res/line3.png')
         var drpzone = document.getElementById('sd');
@@ -83,9 +85,9 @@ function PredMain() {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                 },
-                body: JSON.stringify({ Image: acceptedFile.result }),
+                body: acceptedFile.result,
             });
 
             console.log(response);
@@ -101,7 +103,7 @@ function PredMain() {
 
                     setTaskLoader(false);
                     // settableLoaded(true);
-                    imgSetterTest();
+                    setimgRes(uploadedImage)
                 }, 1500);
 
             } else {
@@ -143,12 +145,13 @@ function PredMain() {
     // }, [vantaEffect])
     return (
         <>
+        <Navbar title = "FarmEasy"/>
             <div ref={myRef} id="MainBack">
                 <div className="container">
                     <MyDropzone SetUrl={fseturl} refer={setREF} />
                     {TaskLoader ? <LoaderTask /> : <div className="btn"><input type='button' onClick={predictHandle} className="a" value="Start Prediction" /></div>}
                     <div id="sd">
-                        <h2>Matched Image</h2>
+                        <h2>{imgRes}</h2>
                     </div></div>
                 <div>
                     {/* { <h1 className='cnt'>{Data.label}</h1>} */}

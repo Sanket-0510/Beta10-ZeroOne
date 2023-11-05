@@ -9,8 +9,8 @@ function Section() {
             <div className="leftBSec">
                 <h2>Dashboard</h2>
                 <div className="content">
-                    {list.map((e)=>{
-                        return <GraphSec key={e}/>
+                    {list.map((e, ind)=>{
+                        return <GraphSec key={e} in = {ind}/>
                     })}
                 </div>
             </div>

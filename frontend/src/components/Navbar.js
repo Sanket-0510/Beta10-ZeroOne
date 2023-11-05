@@ -6,6 +6,17 @@ function Navbar(props) {
         localStorage.removeItem("Token");
         Navigate("/Login");
     }
+
+    const handler = async () =>{
+        const res = await fetch("http://10.12.88.32:8000/cv/sms", {
+            method:"POST" ,
+            headers:{ "Content-Type": "application/json"},
+            body: JSON.stringify({crop:'Brinjal', phoneNo:'9920996773', state:'Himachal Pradesh'})
+        })
+
+        let d = res.json();
+        alert(d)
+    }
     return (
         <nav className="navbar navbar-expand-lg h-auto " >
             <div className="container-fluid">
@@ -16,7 +27,7 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" aria-current="page" to="/">Product Prediction</Link>
+                            <buttn className="nav-link btn" aria-current="page" to="/" onClick={handler}>Get SMS</buttn>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" aria-current="page" to="/About">About</Link>
