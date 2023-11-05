@@ -1,15 +1,19 @@
 const { User } = require("../models/user.js");
 
 const { createJwtToken, generateOtp } = require("../utils.js");
+
 const handleLogin = async (req, res) => {
   try {
     const { phoneNo } = req.body;
     const user = await User.findOne({ phoneNo: phoneNo });
-    req.session.user = user;
 
     if (user) {
       const otp = generateOtp();
+      req.session.user = user;
       req.session.otp = otp;
+
+      // Your Twilio message sending code (unchanged)
+      // ...
       const accountSid = process.env.TWILIO_ACCOUNT_SID;
       const authToken = process.env.TWILIO_AUTH_TOKEN;
       const client = require("twilio")(accountSid, authToken);
@@ -32,16 +36,13 @@ const handleLogin = async (req, res) => {
 
 const verifyOtp = async (req, res) => {
   const otp = req.body.otp;
-  console.log(otp);
-  console.log(req.session.otp);
   const storedOtp = req.session.otp;
-
-  if (otp == storedOtp) {
+  console.log(storedOtp)
+  if (otp === storedOtp) {
     const token = createJwtToken(req.session.user);
-    console.log(token);
+    
     res.status(200).send(token);
   } else {
-    console.log("OTP did not match");
     res.status(400).send("Wrong OTP");
   }
 };
@@ -55,8 +56,9 @@ const handleRegistration = async (req, res) => {
       phoneNo: phoneNo,
       address: address,
     });
+
     const savedUser = await user.save();
-    console.log(savedUser);
+
     res.status(200).json(savedUser);
   } catch (error) {
     console.error(error);
@@ -64,4 +66,4 @@ const handleRegistration = async (req, res) => {
   }
 };
 
-module.exports = { handleLogin, handleRegistration, verifyOtp };
+module.exports={handleLogin, handleRegistration,verifyOtp}
