@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 
 function Card(props) {
+    const [imgGot, setimgGot] = useState("https://source.unsplash.com/random/400x400")
 
     const cardData = props.data;
 
@@ -12,7 +13,7 @@ function Card(props) {
         cardData && <div className="card mb-3" style={{ maxWidth: '70rem', maxHeight: '42%', border: 'none' }}>
             <div className="row g-0">
                 <div className="col-md-4">
-                    <img src="{cardData.img}" className="img-fluid rounded-start" alt="..." />
+                    <img src={imgGot} className="img-fluid rounded-start" alt="..." />
                 </div>
                 <div className="col-md-8 center">
                     <div className="card-body d-flex flex-column align-items-center">

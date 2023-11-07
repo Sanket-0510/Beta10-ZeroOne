@@ -62,7 +62,25 @@ export default function Login() {
             id="phoneNo"
             value={phoneNo}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            placeholder="Phone Number"
+            placeholder="Phone
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            Number"
           />
           <button onClick={handlePhoneSubmit}>Submit</button>
         </div>

@@ -47,7 +47,7 @@ function MainPage() {
 
     console.log(filterData)
 
-    const [imgGot, setimgGot] = useState("https://source.unsplash.com/random/400x400")
+  
     // const [cardData, setCardData] = useState({
     //     img: imgGot,
     //     title: "Apple",
@@ -96,7 +96,7 @@ function MainPage() {
                 <div className="rightmainpge">
                     <h1>Forecasting</h1>
                     <div className="content">
-                        <h2>Today's Price : </h2>
+                        <h2>Today's Price : {filterData[0].ndtd_Modal_Price}</h2>
                         <Table prices={foreCasting} />
                         <Modal />
                     </div>
