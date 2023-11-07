@@ -8,7 +8,7 @@ function Navbar(props) {
     }
 
     const handler = async () =>{
-        const res = await fetch("http://10.12.88.32:8000/cv/sms", {
+        const res = await fetch("http://localhost:8000/cv/sms", {
             method:"POST" ,
             headers:{ "Content-Type": "application/json"},
             body: JSON.stringify({crop:'Brinjal', phoneNo:'9920996773', state:'Himachal Pradesh'})

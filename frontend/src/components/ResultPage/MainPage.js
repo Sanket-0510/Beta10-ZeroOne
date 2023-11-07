@@ -32,7 +32,7 @@ function MainPage() {
             return;
         }
         console.log("adsa",filterData[0])
-        const res = await fetch("http://10.12.88.32:8000/cv/predict", {
+        const res = await fetch("http://localhost:8000/cv/predict", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

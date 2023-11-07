@@ -10,7 +10,7 @@ export default function Login() {
 
   const handlePhoneSubmit = async () => {
     try {
-      const response = await fetch('http://10.12.88.32:8000/auth/login', {
+      const response = await fetch('http://localhost:8000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export default function Login() {
 
   const handleOtpSubmit = async () => {
     try {
-      const response = await fetch('http://10.12.88.32:8000/otp/verify', {
+      const response = await fetch('http://localhost:8000/otp/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

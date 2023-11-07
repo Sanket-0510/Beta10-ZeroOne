@@ -74,7 +74,7 @@ function FilterBar(props) {
     console.log(selectedCrop)
     console.log(selectedState)
 
-    const res = await fetch("http://10.12.88.32:8000/crop/web/getCropData", {
+    const res = await fetch("http://localhost:8000/crop/web/getCropData", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

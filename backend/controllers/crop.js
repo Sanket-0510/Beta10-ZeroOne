@@ -25,7 +25,7 @@ const fetchCropData = async (crop, state) => {
           "Cache-Control": "no-cache",
         },
         referrer: "https://enam.gov.in/web/dashboard/Agm_Enam_ctrl",
-        body: `language=en&stateName=${upperState}&fromDate=2023-11-04&toDate=2023-11-04`,
+        body: `language=en&stateName=${upperState}&fromDate=2023-11-07&toDate=2023-11-07`,
         credentials: "include",
         mode: "cors",
       }
@@ -46,8 +46,7 @@ const handleWebCropPost = async (req, res) => {
   try {
     const { crop, state } = req.body;
     console.log("here");
-    console.log(crop)
-    console.log(state)
+
     const response = await fetchCropData(crop, state)
     console.log(response.data)
     if(response.data){

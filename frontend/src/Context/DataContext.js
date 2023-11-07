@@ -3,46 +3,8 @@ import NewContext from './NewContext'
 import axios from 'axios'
 
 const DataContext = (props) => {
-    /*const Notes =
-    [
-        {
-            "_id": "639deb029f2a1c14cb63455d",
-            "user": "639db828cdd35626ef0b441f",
-            "title": "My First Note",
-            "description": "Hello this is my first note, just checking that everything works fine and there is any error or not",
-            "tag": "Checker",
-            "date": "2022-12-17T16:14:58.071Z",
-            "__v": 0
-        },
-            {
-                "_id": "639deb2a9f2a1c14cb63455f",
-                "user": "639db828cdd35626ef0b441f",
-                "title": "My Second Note",
-                "description": "Hello this is my first note, just checking that everything works fine and there is any error or not",
-                "tag": "Checker",
-                "date": "2022-12-17T16:15:38.885Z",
-                "__v": 0
-            },
-            {
-                "_id": "639e15ace12646850315fb61",
-                "user": "639db828cdd35626ef0b441f",
-                "title": "My third Note",
-                "description": "Hello this is my first note, just checking that everything works fine and there is any error or not",
-                "tag": "Checker",
-                "date": "2022-12-17T19:17:00.341Z",
-                "__v": 0
-            },
-            {
-                "_id": "63a051acff141aaca8526c11",
-                "user": "639db828cdd35626ef0b441f",
-                "title": "My fourth Note",
-                "description": "Hello this is my fourth note, just checking that everything works fine and there is any error or not",
-                "tag": "Checker",
-                "date": "2022-12-19T11:57:32.334Z",
-                "__v": 0
-            }
-        ]*/
-    const Host = process.env.REACT_APP_HOST || "http://10.12.88.32:8000";
+  
+    const Host = process.env.REACT_APP_HOST || "http://localhost:8000";
     const [Notes, setNotes] = useState(null);
     const [TopComm, setTopComm] = useState(null);
     const [SelectedNote, setSelectedNote] = useState(null);

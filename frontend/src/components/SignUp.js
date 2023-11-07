@@ -61,7 +61,7 @@ const state = ["Andhra Pradesh",
 
           // Send the form data to the desired route using the fetch API.
 
-         await fetch('http://10.12.88.32:8000/auth/register', {
+         await fetch('http://localhost:8000/auth/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
