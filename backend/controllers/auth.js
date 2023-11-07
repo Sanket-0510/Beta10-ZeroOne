@@ -1,67 +1,64 @@
 const { User } = require("../models/user.js");
 
-const { createJwtToken, generateOtp } = require("../utils.js");
-const handleLogin = async (req, res) => {
-  try {
-    const { phoneNo } = req.body;
-    const user = await User.findOne({ phoneNo: phoneNo });
-    req.session.user = user;
+const {createJwtToken} = require("../utils.js")
 
-    if (user) {
-      const otp = generateOtp();
-      req.session.otp = otp;
+const handleLogin = async (req, res) => {
+    try {
+      const { phoneNo } = req.body;
+      const user = await User.findOne({ phoneNo: phoneNo });
+  
+      if (user) {
+        const token = createJwtToken(user);
+        res.send(token);
+      } else {
+        throw new Error("User not found");
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error during login");
+    }
+  };
+
+  
+  const handleOtp = async (req, res) => {
+    try {
+      const phoneNo = req.body.phoneNo; // Correct the destructuring
       const accountSid = process.env.TWILIO_ACCOUNT_SID;
       const authToken = process.env.TWILIO_AUTH_TOKEN;
       const client = require("twilio")(accountSid, authToken);
+      const otp = Math.floor(100000 + Math.random() * 900000);
+      const phoneNumber = phoneNo;
       const message = `Your OTP for login is: ${otp}`;
       const result = await client.messages.create({
         body: message,
         from: "+17407910489",
-        to: `+91${phoneNo}`,
+        to: "+919920996773",
       });
-
-      res.status(200).send("OTP sent successfully");
-    } else {
-      throw new Error("User not found");
+      console.log(result);
+      res.status(200).send(result);
+    } catch (e) {
+      console.log(e);
+      res.status(500).send("Error");
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error during login");
   }
-};
-
-const verifyOtp = async (req, res) => {
-  const otp = req.body.otp;
-  console.log(otp);
-  console.log(req.session.otp);
-  const storedOtp = req.session.otp;
-
-  if (otp == storedOtp) {
-    const token = createJwtToken(req.session.user);
-    console.log(token);
-    res.status(200).send(token);
-  } else {
-    console.log("OTP did not match");
-    res.status(400).send("Wrong OTP");
-  }
-};
+  
 
 const handleRegistration = async (req, res) => {
-  try {
-    const { name, state, phoneNo, address } = req.body;
-    const user = new User({
-      name: name,
-      state: state,
-      phoneNo: phoneNo,
-      address: address,
-    });
-    const savedUser = await user.save();
-    console.log(savedUser);
-    res.status(200).json(savedUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error during registration");
-  }
-};
-
-module.exports = { handleLogin, handleRegistration, verifyOtp };
+    try {
+      const { name, state, phoneNo, address } = req.body;
+      const user = new User({
+        name: name,
+        state: state,
+        phoneNo: phoneNo,
+        address: address,
+      });
+      const savedUser = await user.save();
+      console.log(savedUser);
+      res.status(200).json(savedUser);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error during registration");
+    }
+  };
+  
+module.exports = { handleLogin, handleRegistration,handleOtp };

@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
 import './Modal.css'
 
@@ -7,7 +7,7 @@ const API_KEY = "cb7f415e8a36f048b70a2aa8c574afbf";
 function Modal() {
 
     const Navigate = useNavigate();
-    
+
     const [cityInput, setCity] = useState("Bhopal")
     // const cityInput = document.querySelector(".city-input");
     const searchButton = document.querySelector(".search-btn");
@@ -108,11 +108,8 @@ function Modal() {
     return (
         <>
             <div className='Mdal' style={{ width: '90%' }}>
-                <button type="button" className="btn btn-outline-success btn-lg"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    See Weather Forecast
-                </button>
-                <button type="button" onClick={()=>Navigate('/Predict')} className="btn btn-outline-info btn-lg ms-4" >
-                    Crop Predictions
+                <button type="button" className="btn btn-outline-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    View Detailed Prices
                 </button>
 
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -126,7 +123,7 @@ function Modal() {
                                 <div className="container">
                                     <div className="weather-input">
                                         <h3>Enter a City Name</h3>
-                                        <input className="city-input" type="text" onChange={(e)=>setCity(e.target.value)} placeholder="E.g., New York, London, Tokyo" />
+                                        <input className="city-input" type="text" onChange={(e) => setCity(e.target.value)} placeholder="E.g., New York, London, Tokyo" />
                                         <button className="search-btn" onClick={getCityCoordinates}>Search</button>
                                         <div className="separator"></div>
                                         <button className="location-btn" onClick={getUserCoordinates}>Use Current Location</button>

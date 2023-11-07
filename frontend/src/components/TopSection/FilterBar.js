@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import React from 'react'
+import React, { useContext } from 'react'
 import './fltr.css'
+import NewContext from "../../Context/NewContext"
 
 const state = ["Andhra Pradesh",
   "Arunachal Pradesh",
@@ -62,9 +63,32 @@ const commodityNames = [
   "BAJRA"
 ];
 
-function FilterBar() {
+function FilterBar(props) {
+  const context = useContext(NewContext);
+  const { selectedCrop, selectedState, setselectedState, setselectedCrop, filterData, setfilterData } = context;
+
   const Navigate = useNavigate();
-  const handleGoClick = () => {
+  let type = props.type;
+  const handleGoClick = async () => {
+
+    console.log(selectedCrop)
+    console.log(selectedState)
+
+    const res = await fetch("http://10.12.88.32:8000/crop/web/getCropData", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        crop: selectedCrop,
+        state: selectedState
+      })
+    })
+
+    const data = await res.json();
+    console.log(data);
+    console.log("ckasd")
+    setfilterData(data)
     Navigate('/MainSearchPage')
   }
   return (
@@ -72,7 +96,7 @@ function FilterBar() {
       <div className='fltrbar'>
         <div className="stateclr">
           <label htmlFor="job">State:</label>
-          <select id="job" name="user_job">
+          <select id="job" name="user_job" onChange={(e => setselectedState(e.target.value))}>
             {
               state.map((e, ind) => {
                 return <option value={e.toLowerCase()} key={ind}>{e}</option>
@@ -82,7 +106,7 @@ function FilterBar() {
         </div>
         <div className="stateclr">
           <label htmlFor="job">Commodity:</label>
-          <select id="job" name="user_job">
+          <select id="job" name="user_job" onChange={(e => setselectedCrop(e.target.value))}>
             {
               commodityNames.map((e, ind) => {
                 return <option value={e.toLowerCase()} key={ind}>{e}</option>

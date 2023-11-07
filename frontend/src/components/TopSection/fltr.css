@@ -1,12 +1,11 @@
 .stateclr{
-    min-width: 10rem;
     display: flex;
-    flex-wrap: wrap;
-    text-align: center ;
     justify-content: center;
+    align-items: center;
+    height: 3.5rem;
+    margin-left: 2%;
 }
 .stateclr, span{
-    width: 10px; 
     font-size: larger;
     font-weight: bolder;
     text-align: center;
@@ -14,4 +13,5 @@
 
 .stateclr select{
     width: 9rem; 
+    background-color: aquamarine;
 }

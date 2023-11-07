@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     overflow-y: hidden;
 }
-.sectionBottom h1{
+.sectionBottom h2{
     background-color: rgba(0, 0, 0, 0.499) ;
     color: rgba(255, 255, 255, 0.773);
 }
@@ -36,7 +36,7 @@
     padding-bottom: 7%;
 }
 .graphCard{
-    width: 500px;
+    width: 400px;
     overflow-y: hidden;
 }
 

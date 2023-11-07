@@ -1,8 +1,7 @@
-
+const {createHmac, randomBytes} = require('crypto')
 const jwt = require('jsonwebtoken')
 
- function createJwtToken(user){
-  console.log(user)
+async function createJwtToken(user){
     const payload = {
       _id: user._id,
       name:user.name,
@@ -10,17 +9,14 @@ const jwt = require('jsonwebtoken')
       address: user.address
     }
     const token = jwt.sign(payload, process.env.SECRETE_KEY)
+    
     return token
 
 }
 async function verifyJwt(token){
      const payload = jwt.verify(token, process.env.SECRETE_KEY)
-     return payload 
+     return payload
 }
 
-function generateOtp(){
-  return Math.floor(100000 + Math.random() * 900000);
-}
-
-module.exports = {createJwtToken, verifyJwt,generateOtp}
+module.exports = {createJwtToken, verifyJwt}
 

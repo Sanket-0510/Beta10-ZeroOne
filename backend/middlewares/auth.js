@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken'); // Import the 'jsonwebtoken' module
-const {verifyJwt} =require("../utils.js")
+const {verifyJwt} =require("../util")
 const auth = async (req, res, next) => {
   try {
    

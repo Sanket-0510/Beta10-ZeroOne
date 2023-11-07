@@ -1,56 +1,102 @@
-import React from 'react'
-import './form.css'
-import Navbar from './Navbar'
+import React, { useState } from 'react';
 
-function Login() {
-    return (
-        <>
-            <Navbar title="FarmEasy" />
-            <div className="row">
-                <div className="col-md-12">
-                    <form action="index.html" method="post">
-                        <h1> Sign Up </h1>
+import { useNavigate } from 'react-router-dom';
 
-                        <fieldset>
+export default function Login() {
+  const navigation = useNavigate();
+  const [phoneNo, setPhoneNumber] = useState('');
+  const [otp, setOtp] = useState('');
+  const [step, setStep] = useState(1); // Initial step
 
-                            <legend><span className="number">1</span> Your Basic Info</legend>
+  const handlePhoneSubmit = async () => {
+    try {
+      const response = await fetch('http://10.12.88.32:8000/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNo }),
+      });
 
-                            <label htmlFor="name">Name:</label>
-                            <input type="text" id="name" name="user_name" />
+      if (response.ok) {
+        // If phone number verification is successful, proceed to OTP input
+        setStep(2);
+      } else {
+        // Handle error (e.g., display an error message to the user)
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error(error);
+    }
+  };
 
-                            <label>Age:</label>
-                            <input type='number' id="inAge" name="user_age" />
+  const handleOtpSubmit = async () => {
+    try {
+      const response = await fetch('http://10.12.88.32:8000/otp/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ otp:otp }),
+      });
 
-                        </fieldset>
-                        <fieldset>
+      if (response.ok) {
+        // OTP verification successful, the user is logged in
+        // You can perform further actions (e.g., store user session)
+      } else {
+        // Handle error (e.g., display an error message to the user)
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error(error);
+    }
+  };
 
-                            <legend><span className="number">2</span> Your Contact Info</legend>
-
-                            <label htmlFor="addr">Address:</label>
-                            <textarea id="addr" name="user_addr"></textarea>
-
-                            <label htmlFor="job">State:</label>
-                            <select id="job" name="user_job">
-                                <option value="frontend_developer">Front-End Developer</option>
-                                <option value="php_developer">PHP Developer</option>
-                                <option value="python_developer">Python Developer</option>
-                                <option value="rails_developer">Rails Developer</option>
-                                <option value="web_designer">Web Designer</option>
-                                <option value="wordpress_developer">Wordpress Developer</option>
-                            </select>
-                            <label>Phone:</label>
-                            <input type='number' id="sphone" name="user_phone" />
-
-                        </fieldset>
-
-                        <button type="submit" className='.sfbtn'>Sign Up</button>
-
-                    </form>
-                </div>
-            </div>
-        </>
-
-    )
+  return (
+    <div className="login-container">
+      {step === 1 ? (
+        <div className="phone-input">
+          <label htmlFor="phone">Enter Phone Number:</label>
+          <input
+            type="text"
+            id="phoneNo"
+            value={phoneNo}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            placeholder="Phone
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            Number"
+          />
+          <button onClick={handlePhoneSubmit}>Submit</button>
+        </div>
+      ) : step === 2 ? (
+        <div className="otp-input">
+          <label htmlFor="otp">Enter OTP:</label>
+          <input
+            type="text"
+            name='otp'
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+            placeholder="OTP"
+          />
+          <button onClick={handleOtpSubmit}>Submit</button>
+        </div>
+      ) : null}
+    </div>
+  );
 }
-
-export default Login
