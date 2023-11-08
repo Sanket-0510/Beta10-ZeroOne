@@ -17,6 +17,17 @@ require('dotenv').config();
 
 const cors = require('cors');
 app.use(cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', `http://${process.env.URL}:3000`); // Replace with your React app's domain.
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
 
 const connectDB = require('./config/database.js');
 connectDB();
@@ -37,3 +48,5 @@ app.use("/cv", cvRouter)
 app.listen(8000, (req,res)=>{
     console.log("listening at 8000")
 })
+
+//thats it 

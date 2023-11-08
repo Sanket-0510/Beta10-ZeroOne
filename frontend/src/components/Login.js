@@ -10,7 +10,7 @@ export default function Login() {
 
   const handlePhoneSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:8000/auth/login', {
+      const response = await fetch(`http://${process.env.REACT_APP_URL}:8000/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export default function Login() {
 
   const handleOtpSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:8000/otp/verify', {
+      const response = await fetch(`http://${process.env.URL}:8000/otp/verify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,25 +62,7 @@ export default function Login() {
             id="phoneNo"
             value={phoneNo}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            placeholder="Phone
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            Number"
+            placeholder="Phone Number"
           />
           <button onClick={handlePhoneSubmit}>Submit</button>
         </div>

@@ -74,7 +74,7 @@ function FilterBar(props) {
     console.log(selectedCrop)
     console.log(selectedState)
 
-    const res = await fetch("http://localhost:8000/crop/web/getCropData", {
+    const res = await fetch(`http://${process.env.REACT_APP_URL}:8000/crop/web/getCropData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -124,3 +124,5 @@ function FilterBar(props) {
 }
 
 export default FilterBar
+
+//comments 

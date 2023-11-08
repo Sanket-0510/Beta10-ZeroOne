@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const DataContext = (props) => {
   
-    const Host = process.env.REACT_APP_HOST || "http://localhost:8000";
+    const Host = process.env.REACT_APP_HOST || `http://${process.env.URL}:8000`;
     const [Notes, setNotes] = useState(null);
     const [TopComm, setTopComm] = useState(null);
     const [SelectedNote, setSelectedNote] = useState(null);

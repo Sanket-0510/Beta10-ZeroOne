@@ -33,7 +33,7 @@ function PredMain() {
         setTaskLoader(true)
         // settableLoaded(false)
     }
-    var url = "http://localhost:5000/"
+    var url = `http://${process.env.REACT_APP_URL}:5000`;
     const imgSetterTest = () => {
         var accepFile = require('../../res/line3.png')
         var drpzone = document.getElementById('sd');
