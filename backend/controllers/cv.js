@@ -43,17 +43,12 @@ const handlecvpost = async(req,res)=>{
 
 const handlePricePost = async (req, res) => {
   try {
-    console.log(req.body)
-    const todaysPrice = req.body.price;
+     const todaysPrice = req.body.price;
     const commodity = req.body.commodity;
 
-    // Calculate the decrease percentage (between 1% and 2%)
+
     const decreasePercentage = Math.random() * (2 - 1) + 1;
-
-    // Calculate the decrease amount
     const decreaseAmount = todaysPrice * (decreasePercentage / 100);
-
-    // Create an array of seven numbers with floor values
     const priceArray = [];
     for (let i = 0; i < 3; i++) {
       priceArray.push(Math.floor(todaysPrice - decreaseAmount - i));
@@ -70,20 +65,19 @@ const handlePricePost = async (req, res) => {
       },
      body:JSON.stringify({"data":priceArray})
     })
-    const result = await result0.json();
-    console.log(result)
+ 
+    const result = (await result0.json()).result
     const final_array =[]
     const decreasePercent = Math.random() * (2 - 1) + 1;
     const decreaseAm = result * (decreasePercent / 100);
     for (let i = 0; i < 3; i++) {
       final_array.push(Math.floor(result - decreaseAm- i));
     }
-    final_array.push(Math.floor(Number(todaysPrice))); // Today's price in the middle
+    final_array.push(Math.floor(Number(todaysPrice))); 
     for (let i = 0; i < 3; i++) {
       final_array.push(Math.floor(result - decreaseAm + i));
     }
     
-    console.log('Response from server:', final_array);
     res.status(200).json({ result: final_array });
   } catch (e) {
     console.error('Error:', e);

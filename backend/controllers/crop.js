@@ -1,12 +1,10 @@
-const { fileURLToPath } = require("url");
 
 const { MessagingResponse } = require("twilio").twiml;
 
 const fetchCropData = async (crop, state) => {
   try {
-    console.log(state.toUpperCase())
+  
     const upperState = state.toUpperCase()
-    console.log("here in fetch")
     const result = await fetch(
       "https://enam.gov.in/web/Agm_Enam_ctrl/trade_data_list",
       {
@@ -25,7 +23,7 @@ const fetchCropData = async (crop, state) => {
           "Cache-Control": "no-cache",
         },
         referrer: "https://enam.gov.in/web/dashboard/Agm_Enam_ctrl",
-        body: `language=en&stateName=${upperState}&fromDate=2023-11-07&toDate=2023-11-07`,
+        body: `language=en&stateName=${upperState}&fromDate=2023-11-08&toDate=2023-11-08`,
         credentials: "include",
         mode: "cors",
       }
@@ -45,15 +43,12 @@ const fetchCropData = async (crop, state) => {
 const handleWebCropPost = async (req, res) => {
   try {
     const { crop, state } = req.body;
-    console.log("here");
 
     const response = await fetchCropData(crop, state)
-    console.log(response.data)
     if(response.data){
     const filteredData = response.data.filter(item => {
       return item.ndtd_Commodity==crop.toUpperCase()
     });
-    console.log(filteredData)
     if(filteredData.length!=0)
      res.status(200).json(filteredData);
     else res.json([{
@@ -128,3 +123,12 @@ const handleSms = async (req, res) => {
 
 };
 module.exports = { handleWebCropPost, handleTwilioCropData, handleSms };
+
+
+
+
+
+
+
+
+
