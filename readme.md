@@ -29,6 +29,22 @@ We are Establishing a platform for small-scale farmers to access market and pric
 Farmers with no access to internet or those who don't have smartphone will be able to access the features using SMS interaction
 
 
+### Application Architecture 
+![Description of the Image](https://drive.google.com/uc?export=view&id=1oRBzTwbF8RqWgPugvqfK7D5Cp6m3c2J8)
+
+
+
+### Applcation Prototype Demo
+![Image Description](https://drive.google.com/uc?export=view&id=1RF6-M8ob_MEfNG7NYz11GwfW7fQt80RE)
+
+
+![Image Description](https://drive.google.com/uc?export=view&id=1R4ph8hYoOFX646-MvFItpNwhyp71Hd77)
+
+![Image Description](https://drive.google.com/uc?export=view&id=1RBjeRirqZLTJocQog9MvK3fMQURZFDq4)
+
+
+
+
 
 
 
